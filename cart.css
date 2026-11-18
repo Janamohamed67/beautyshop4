@@ -1,0 +1,97 @@
+/* ==========================================================
+   cart.css  -  styles for cart.html, checkout.html, confirmation.html
+   Uses the colour variables from style.css (load style.css first)
+   Sections: 1 Layout  2 Cart lines  3 Summary box  4 Forms
+             5 Confirmation  6 Small screens  7 Print
+   ========================================================== */
+
+/* 1. Layout */
+.cart-layout { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); gap: 36px; align-items: start; }
+.narrow { width: min(820px, 92%); }
+.empty-state { text-align: center; padding: 50px 0; }
+.empty-state p { color: var(--muted); }
+
+.link-btn { background: none; border: 0; padding: 0; font: 600 .9rem var(--font-body); color: var(--rose-dark); text-decoration: underline; cursor: pointer; }
+.link-btn:hover { color: var(--plum); }
+.back-link { display: block; margin-top: 14px; text-align: center; font-weight: 600; }
+.btn-block { display: block; width: 100%; text-align: center; margin-top: 18px; }
+
+/* 2. Cart lines */
+.cart-list { list-style: none; margin: 0 0 14px; padding: 0; }
+.cart-line { display: grid; grid-template-columns: 84px 1fr auto 100px; gap: 18px; align-items: center; padding: 18px 0; border-bottom: 1px solid var(--line); }
+.cart-thumb { position: relative; display: block; width: 84px; aspect-ratio: 1 / 1; border-radius: 12px; overflow: hidden; }
+.cart-thumb img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.cart-info h3 { font-size: 1.05rem; margin: 0 0 2px; }
+.cart-info h3 a { color: var(--plum); text-decoration: none; }
+.cart-info h3 a:hover { color: var(--rose-dark); }
+.cart-info .card-category { margin-bottom: 6px; }
+
+.qty { display: inline-flex; align-items: center; border: 1.5px solid var(--line); border-radius: 999px; overflow: hidden; }
+.qty button { width: 36px; height: 36px; border: 0; background: var(--white); font: 700 1.1rem var(--font-body); color: var(--plum); cursor: pointer; }
+.qty button:hover:not(:disabled) { background: var(--blush); }
+.qty button:disabled { color: #b9aebf; cursor: not-allowed; }
+.qty span { min-width: 34px; text-align: center; font-weight: 700; }
+.line-total { margin: 0; text-align: right; font-weight: 700; }
+
+/* 3. Summary box */
+.summary-box { background: var(--lilac); border-radius: var(--radius); padding: 24px; position: sticky; top: 92px; }
+.summary-box h2 { font-size: 1.4rem; }
+.summary-rows { display: grid; grid-template-columns: 1fr auto; gap: 8px 12px; margin: 0 0 12px; }
+.summary-rows dt { color: var(--muted); }
+.summary-rows dd { margin: 0; text-align: right; font-weight: 600; }
+.summary-rows .discount { color: #1b7a43; }
+.summary-rows .total-label,
+.summary-rows .total-value { color: var(--plum); font-size: 1.2rem; font-weight: 700; padding-top: 10px; border-top: 1px solid var(--line); }
+.summary-items { list-style: none; margin: 0 0 14px; padding: 0; }
+.summary-items li { display: flex; justify-content: space-between; gap: 12px; padding: 8px 0; border-bottom: 1px solid var(--line); }
+.summary-items small { color: var(--muted); }
+.notice-small { font-size: .9rem; color: var(--muted); margin: 0 0 6px; }
+
+.promo-form { margin-top: 16px; }
+.promo-form label { font-weight: 700; display: block; margin-bottom: 6px; }
+.promo-row { display: flex; gap: 8px; }
+.promo-row input { flex: 1; min-width: 0; font: 1rem var(--font-body); padding: 9px 14px; border: 1.5px solid var(--line); border-radius: 999px; }
+.promo-form .feedback { margin: 6px 0 0; font-size: .9rem; }
+
+/* 4. Checkout form */
+#checkout-form fieldset { border: 1px solid var(--line); border-radius: var(--radius); padding: 22px 22px 8px; margin: 0 0 24px; min-width: 0; }
+#checkout-form legend { font: 700 1.2rem var(--font-head); color: var(--plum); padding: 0 8px; }
+.form-row select { font: 1rem var(--font-body); padding: 11px 14px; border: 1.5px solid var(--line); border-radius: 10px; width: 100%; background: var(--white); }
+.form-row select:focus { border-color: var(--rose); }
+.form-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.choice { display: flex; align-items: center; gap: 10px; padding: 12px 14px; margin-bottom: 10px; border: 1.5px solid var(--line); border-radius: 10px; cursor: pointer; font-weight: 600; }
+.choice:has(input:checked) { border-color: var(--rose); background: var(--blush); }
+.choice input { accent-color: var(--rose); width: 18px; height: 18px; }
+#card-fields { margin-top: 18px; }
+
+.field-error { margin: 0; min-height: 0; font-size: .9rem; font-weight: 600; color: #b3261e; }
+.form-row.has-error input,
+.form-row.has-error select { border-color: #b3261e; background: #fff6f5; }
+
+/* 5. Confirmation */
+.order-box { text-align: center; }
+.success-mark { width: 72px; height: 72px; margin: 0 auto 16px; display: grid; place-items: center; border-radius: 50%; background: #1b7a43; color: var(--white); font-size: 2.2rem; }
+.lead { color: var(--muted); font-size: 1.1rem; }
+.confirm-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 28px; text-align: left; margin: 30px 0; }
+.confirm-grid section { background: var(--lilac); border-radius: var(--radius); padding: 22px; }
+.confirm-grid h2 { font-size: 1.2rem; }
+.order-box .hero-actions { justify-content: center; }
+
+/* 6. Small screens */
+@media (max-width: 960px) {
+  .cart-layout { grid-template-columns: 1fr; }
+  .summary-box { position: static; }
+}
+@media (max-width: 680px) {
+  .cart-line { grid-template-columns: 70px 1fr; gap: 12px 14px; }
+  .cart-thumb { width: 70px; }
+  .qty { grid-column: 2; justify-self: start; }
+  .line-total { grid-column: 2; text-align: left; }
+  .form-pair,
+  .confirm-grid { grid-template-columns: 1fr; }
+}
+
+/* 7. Print (confirmation page) */
+@media print {
+  .site-header, .site-footer, .order-box .hero-actions, .skip-link, .toast { display: none !important; }
+}
